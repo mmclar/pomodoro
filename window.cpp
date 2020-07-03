@@ -29,7 +29,7 @@ Window::Window()
 
 void Window::setVisible(bool visible)
 {
-    // Don't do anything here; we don't want the window to be visible.
+    QDialog::setVisible(false && visible);
 }
 
 void Window::pom(int minutes) {
