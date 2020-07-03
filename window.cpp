@@ -34,7 +34,7 @@ void Window::createTrayIcon()
 
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setIcon(QIcon(":/images/heart.png"));
+    trayIcon->setIcon(QIcon(":/images/tomato.svg"));
     trayIcon->show();
 }
 
