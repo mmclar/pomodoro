@@ -29,11 +29,13 @@ Window::Window()
 
 void Window::setVisible(bool visible)
 {
+    // Always set visible false
     QDialog::setVisible(false && visible);
 }
 
 void Window::pom(int minutes) {
     int j = minutes;
+    // TODO: How do we get the minutes here?
 }
 
 #endif
