@@ -8,8 +8,23 @@
 
 Window::Window()
 {
-    createActions();
-    createTrayIcon();
+    trayIconMenu = new QMenu(this);
+
+    for (int i = 5; i <= 60; i += 5) {
+        QString menuTitle = QString("%1 minutes").arg(i);
+        QAction *pomAction = new QAction(menuTitle);
+//        connect(pomAction, &QAction::triggered, qApp, &Window::pom(i));
+        trayIconMenu->addAction(pomAction);
+    }
+
+    QAction *quitAction = new QAction(tr("&Quit"), this);
+    connect(quitAction, &QAction::triggered, qApp, &QCoreApplication::quit);
+    trayIconMenu->addAction(quitAction);
+
+    trayIcon = new QSystemTrayIcon(this);
+    trayIcon->setContextMenu(trayIconMenu);
+    trayIcon->setIcon(QIcon(":/images/tomato.svg"));
+    trayIcon->show();
 }
 
 void Window::setVisible(bool visible)
@@ -17,25 +32,8 @@ void Window::setVisible(bool visible)
     // Don't do anything here; we don't want the window to be visible.
 }
 
-void Window::createActions()
-{
-    startPomodoroAction = new QAction(tr("Start pomodoro"), this);
-    connect(startPomodoroAction, &QAction::triggered, this, &QWidget::hide);
-
-    quitAction = new QAction(tr("&Quit"), this);
-    connect(quitAction, &QAction::triggered, qApp, &QCoreApplication::quit);
-}
-
-void Window::createTrayIcon()
-{
-    trayIconMenu = new QMenu(this);
-    trayIconMenu->addAction(startPomodoroAction);
-    trayIconMenu->addAction(quitAction);
-
-    trayIcon = new QSystemTrayIcon(this);
-    trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setIcon(QIcon(":/images/tomato.svg"));
-    trayIcon->show();
+void Window::pom(int minutes) {
+    int j = minutes;
 }
 
 #endif

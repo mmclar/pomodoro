@@ -20,14 +20,9 @@ public:
     void setVisible(bool visible) override;
 
 private:
-    void createActions();
-    void createTrayIcon();
-
-    QAction *startPomodoroAction;
-    QAction *quitAction;
-
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
+    static void pom(int minutes);
 };
 
 #endif // QT_NO_SYSTEMTRAYICON
