@@ -26,6 +26,7 @@ private:
 
 private slots:
     void pomClicked(int minutes);
+    void timerUp();
 };
 
 #endif // QT_NO_SYSTEMTRAYICON
