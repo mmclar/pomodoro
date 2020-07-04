@@ -22,7 +22,9 @@ public:
 private:
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
-    static void pom(int minutes);
+
+private slots:
+    static void pomClicked(int minutes);
 };
 
 #endif // QT_NO_SYSTEMTRAYICON

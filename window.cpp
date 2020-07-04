@@ -13,7 +13,7 @@ Window::Window()
     for (int i = 5; i <= 60; i += 5) {
         QString menuTitle = QString("%1 minutes").arg(i);
         QAction *pomAction = new QAction(menuTitle);
-//        connect(pomAction, &QAction::triggered, qApp, &Window::pom(i));
+        connect(pomAction, &QAction::triggered, this, [i]{ Window::pomClicked(i); });
         trayIconMenu->addAction(pomAction);
     }
 
@@ -33,9 +33,9 @@ void Window::setVisible(bool visible)
     QDialog::setVisible(false && visible);
 }
 
-void Window::pom(int minutes) {
+void Window::pomClicked(int minutes) {
     int j = minutes;
-    // TODO: How do we get the minutes here?
+    // TODO: Use the minutes to show a message, then start the timer
 }
 
 #endif
