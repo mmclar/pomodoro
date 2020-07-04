@@ -5,8 +5,7 @@
 #include <QMessageBox>
 #include "window.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     Q_INIT_RESOURCE(pomodoro);
 
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -31,8 +30,7 @@ int main(int argc, char *argv[])
 #include <QLabel>
 #include <QDebug>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     QString text("QSystemTrayIcon is not supported on this platform");
 

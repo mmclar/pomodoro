@@ -1,6 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource prefix="/">
    <file>images/tomato.svg</file>
+   <file>images/green-tomato.svg</file>
 </qresource>
 </RCC>
 

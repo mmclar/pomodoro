@@ -9,11 +9,13 @@
 Window::Window()
 {
     trayIconMenu = new QMenu(this);
+    ICON_READY = new QIcon(":/images/tomato.svg");
+    ICON_RUNNING = new QIcon(":/images/green-tomato.svg");
 
     for (int i = 5; i <= 60; i += 5) {
         QString menuTitle = QString("%1 minutes").arg(i);
         QAction *pomAction = new QAction(menuTitle);
-        connect(pomAction, &QAction::triggered, this, [i]{ Window::pomClicked(i); });
+        connect(pomAction, &QAction::triggered, this, [this, i]{ Window::pomClicked(i); });
         trayIconMenu->addAction(pomAction);
     }
 
@@ -23,7 +25,7 @@ Window::Window()
 
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setIcon(QIcon(":/images/tomato.svg"));
+    trayIcon->setIcon(*ICON_READY);
     trayIcon->show();
 }
 
@@ -34,8 +36,10 @@ void Window::setVisible(bool visible)
 }
 
 void Window::pomClicked(int minutes) {
-    int j = minutes;
-    // TODO: Use the minutes to show a message, then start the timer
+    QString msgBody = QString("Timer set for %1 minutes").arg(minutes);
+    trayIcon->showMessage("Starting pomodoro", msgBody, *ICON_RUNNING);
+    trayIcon->setIcon(*ICON_RUNNING);
+    trayIcon->setToolTip("Running");
 }
 
 #endif
