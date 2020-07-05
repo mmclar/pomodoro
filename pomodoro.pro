@@ -1,6 +1,8 @@
-HEADERS       = window.h
+HEADERS       = window.h \
+    ticktimer.h
 SOURCES       = main.cpp \
-                window.cpp
+                window.cpp \
+    ticktimer.cpp
 RESOURCES     = pomodoro.qrc \
     pomodoro.qrc
 
