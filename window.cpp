@@ -92,7 +92,8 @@ void Window::updatePomStatus() {
 
 void Window::timerUp() {
     QString msgBody = "Time's up!";
-    trayIcon->showMessage("Pomodoro", msgBody, *ICON_READY, MSG_DISPLAY_DURATION_MS);
+    // Show a message that doesn't fade away until the user address it
+    trayIcon->showMessage("Pomodoro", msgBody, *ICON_READY, 0);
     reset();
 }
 
