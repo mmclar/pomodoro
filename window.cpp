@@ -22,7 +22,6 @@ const int UPDATE_FREQUENCY_MS = 1000;
 Window::Window() {
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
-    tickTimer = new TickTimer(this);
 
     quitAction = new QAction(tr("&Quit"), this);
     connect(quitAction, &QAction::triggered, qApp, &QCoreApplication::quit);
@@ -70,6 +69,7 @@ void Window::pomClicked(int minutes) {
     trayIcon->setIcon(*ICON_RUNNING);
 
     // Start the timer and set the tick and ding callbacks
+    tickTimer = new TickTimer(this);
     connect(tickTimer, &TickTimer::tick, this, [this]{ Window::updatePomStatus(); });
     connect(tickTimer, &TickTimer::ding, this, [this]{ Window::timerUp(); });
     tickTimer->start(UPDATE_FREQUENCY_MS, minutes * MS_PER_MINUTE);
